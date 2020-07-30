@@ -68,7 +68,7 @@ class SemaphoreTracker(object):
                 exe = spawn.get_executable()
                 args = [exe] + util._args_from_interpreter_flags()
                 args += ['-c', cmd % r]
-                pid = util.spawnv_passfds(exe, args, fds_to_pass)
+                pid = util.spawnv_passfds(exe, args, tuple(fds_to_pass))
             except:
                 os.close(w)
                 raise
